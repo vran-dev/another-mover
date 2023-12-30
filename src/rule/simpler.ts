@@ -35,7 +35,6 @@ export class Simpler {
 		}
 
 		for (const action of this.context.rule.actions) {
-			console.log("invoke action ", action.type, this.context.file.path);
 			try {
 				const invoker = ActionHandlerFactory.create(
 					action.type,
