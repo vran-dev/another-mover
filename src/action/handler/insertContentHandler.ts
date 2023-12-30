@@ -1,5 +1,5 @@
 import { ActionHandler } from "./actionHandler";
-import { Editor, MarkdownView } from "obsidian";
+import { App, Editor, MarkdownView, TFile } from "obsidian";
 import DefaultVariableHandler, {
 	VariableContext,
 } from "../../variable/variableHandler";
@@ -34,7 +34,7 @@ export default class InsertContentActionHandler extends ActionHandler {
 				this.insertAtCursort(newContent, editor);
 				break;
 			case "fileEnd":
-				this.insertAtFileEnd(newContent, editor);
+				this.insertAtFileEnd(newContent, this.context.file, this.context.app);
 				break;
 			case "fileStart":
 				this.insertAtFileStart(newContent, editor);
@@ -46,10 +46,11 @@ export default class InsertContentActionHandler extends ActionHandler {
 		editor.replaceSelection(content);
 	}
 
-	insertAtFileEnd(content: string, editor: Editor) {
-		const lastLine = editor.lastLine();
-		const conbineContent = "\n" + content;
-		editor.replaceRange(conbineContent, { line: lastLine + 1, ch: 0 });
+	insertAtFileEnd(content: string, file: TFile, app: App) {
+
+		this.context.app.vault.append(file, `\n${content}`, {
+			mtime: new Date().getTime()
+		})
 	}
 
 	insertAtFileStart(content: string, editor: Editor) {
