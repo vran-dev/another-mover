@@ -192,6 +192,10 @@ export class AnotherMoverSettingTab extends PluginSettingTab {
 				dropdown.setValue(action.type || "MOVE_CURRENT_FILE");
 				dropdown.onChange(async (value) => {
 					action.type = value as ActionType;
+					action.args = {
+						...actionSettings.find((s) => s.type == action.type)?.args,
+						...action.args
+					}
 					this.refreshRegister(rule);
 					await this.plugin.saveSettings();
 					this.display();

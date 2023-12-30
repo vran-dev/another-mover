@@ -1,4 +1,4 @@
-import { App, TFile, TFolder } from "obsidian";
+import { App, TFile, TFolder, normalizePath } from "obsidian";
 
 export function loadAllFiles(folder: TFolder, files: TFile[]) {
 	for (const file of folder.children) {
@@ -14,11 +14,12 @@ export async function createFolderIfNotExists(
 	app: App,
 	path: string
 ): Promise<TFolder> {
-	const fileBasedOnPath = app.vault.getAbstractFileByPath(path);
+	const normalizedPath = normalizePath(path);
+	const fileBasedOnPath = app.vault.getAbstractFileByPath(normalizedPath);
 	if (fileBasedOnPath && fileBasedOnPath instanceof TFolder) {
 		return fileBasedOnPath;
 	} else {
-		return await app.vault.createFolder(path);
+		return await app.vault.createFolder(normalizedPath);
 	}
 }
 

@@ -29,6 +29,10 @@ export default class MoveCurrentFolderActionHandler extends ActionHandler {
 			this.context.app,
 			this.context.file
 		);
+		if (this.context.file.path.startsWith(normalizedTargetFolder)) {
+			new Notice("ignored, file already in target folder");
+			return;
+		}
 		const targetFolder = (await createFolderIfNotExists(
 			this.context.app,
 			normalizedTargetFolder

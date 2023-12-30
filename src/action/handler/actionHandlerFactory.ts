@@ -19,7 +19,7 @@ export default class ActionHandlerFactory {
 				return new MoveCurrentFileActionHandler(action, context);
 			case "UPDATE_PROPERTY":
 				return new UpdatePropertyActionHandler(action, context);
-			case "INSERT_CONTENT_AT_CURSOR":
+			case "INSERT_CONTENT":
 				return new InsertContentActionHandler(action, context);
 			case "INVOKE_COMMAND":
 				return new InvokeCommandActionHandler(action, context);

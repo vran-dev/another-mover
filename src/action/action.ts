@@ -19,7 +19,7 @@ export type ActionType =
 	| "MOVE_CURRENT_FOLDER"
 	| "MOVE_CURRENT_FILE"
 	| "UPDATE_PROPERTY"
-	| "INSERT_CONTENT_AT_CURSOR"
+	| "INSERT_CONTENT"
 	| "INVOKE_COMMAND";
 
 export const actionSettings = [

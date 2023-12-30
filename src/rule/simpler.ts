@@ -45,7 +45,7 @@ export class Simpler {
 				await invoker.execute();
 			} catch (e) {
 				new Notice(
-					`unknown actionType ${action.type}, maybe you need to update plugin`
+					`invoke action ${action.type} failed, please check console log`
 				);
 				console.error(e)
 				return;

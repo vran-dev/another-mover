@@ -15,7 +15,7 @@ export class InsertContentActionSetting implements ActionSetting {
 
 	constructor() {
 		this.id = randomUUID();
-		this.type = "INSERT_CONTENT_AT_CURSOR";
+		this.type = "INSERT_CONTENT";
 		this.args = {
 			content: "",
 			position: "atCursor",
@@ -34,18 +34,27 @@ export class InsertContentActionSetting implements ActionSetting {
 		refresh: () => void,
 		onSave: (action: Action, rule: Rule) => void
 	): void {
-
 		setting.addDropdown((dropdown) => {
+			action.args.position = action.args.position || "atCursor";
 			dropdown
-				.addOption("atCursor", Messages.setting_label_rule_action_type_insert_content_at_cursor.get())
-				.addOption("fileEnd", Messages.setting_label_rule_action_type_insert_content_at_file_end.get())
-				.addOption("fileStart", Messages.setting_label_rule_action_type_insert_content_at_file_start.get())
+				.addOption(
+					"atCursor",
+					Messages.setting_label_rule_action_type_insert_content_at_cursor.get()
+				)
+				.addOption(
+					"fileEnd",
+					Messages.setting_label_rule_action_type_insert_content_at_file_end.get()
+				)
+				.addOption(
+					"fileStart",
+					Messages.setting_label_rule_action_type_insert_content_at_file_start.get()
+				)
 				.setValue(action.args.position?.toString() || "atCursor")
 				.onChange(async (value) => {
 					action.args.position = value;
 					onSave(action, rule);
 				});
-		})
+		});
 
 		setting.addTextArea((text) => {
 			text.setPlaceholder("content")

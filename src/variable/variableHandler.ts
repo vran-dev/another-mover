@@ -12,6 +12,7 @@ export class VariableContext {
 		context.datetime = DateTime;
 		// date context
 		context.now = DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss");
+		context.nowIso = DateTime.now().toFormat("yyyy-MM-dd'T'HH:mm:ss");
 		context.today = DateTime.now().toFormat("yyyy-MM-dd");
 		context.tomorrow = DateTime.now()
 			.plus({ days: 1 })
@@ -19,6 +20,14 @@ export class VariableContext {
 		context.yesterday = DateTime.now()
 			.minus({ days: 1 })
 			.toFormat("yyyy-MM-dd");
+
+		// frontmatter
+		const metadata = app.metadataCache.getFileCache(file);
+		if (metadata) {
+			context.frontmatter = metadata.frontmatter;
+		} else {
+			context.frontmatter = {};
+		}
 		return context;
 	}
 }
