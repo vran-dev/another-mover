@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "simpler",
+	"name": "Simpler",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
+	"minAppVersion": "0.14.0",
+	"description": "use this plugin to simplize your actions, you can use it to orchestration and execute a series of actions with one step, like macro, but more powerful.",
 	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"authorUrl": "https://github.com/vran-dev",
+	"fundingUrl": "https://www.buymeacoffee.com/vran",
 	"isDesktopOnly": false
 }

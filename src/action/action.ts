@@ -1,0 +1,31 @@
+import { MoveCurrentFolderActionSetting } from "./setting/MoveCurrentFolderActionSetting";
+import { MoveCurrentFileActionSetting } from "./setting/MoveCurrentFileActionSetting";
+import { UpdatePropertyActionSetting } from "./setting/UpdatePropertyActionSetting";
+import { InsertContentAtCursorActionSetting } from "./setting/InsertContentAtCursorActionSetting";
+import { InvokeCommandActionSetting } from "./setting/InvokeCommandActionSetting";
+
+export interface Action {
+	id: string;
+
+	type: ActionType;
+
+	args: {
+		[key: string]: string | number | boolean;
+	};
+
+}
+
+export type ActionType =
+	| "MOVE_CURRENT_FOLDER"
+	| "MOVE_CURRENT_FILE"
+	| "UPDATE_PROPERTY"
+	| "INSERT_CONTENT_AT_CURSOR"
+	| "INVOKE_COMMAND";
+
+export const actionSettings = [
+	new MoveCurrentFolderActionSetting(),
+	new MoveCurrentFileActionSetting(),
+	new UpdatePropertyActionSetting(),
+	new InsertContentAtCursorActionSetting(),
+	new InvokeCommandActionSetting(),
+];
