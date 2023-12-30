@@ -5,11 +5,12 @@ import { Messages } from "src/i18/i18n";
 import { App, Setting } from "obsidian";
 import { Rule } from "src/rule/rule";
 
-export class InsertContentAtCursorActionSetting implements ActionSetting {
+export class InsertContentActionSetting implements ActionSetting {
 	id: string;
 	type: ActionType;
 	args: {
 		content: string;
+		position?: "atCursor" | "fileEnd" | "fileStart";
 	};
 
 	constructor() {
@@ -17,11 +18,12 @@ export class InsertContentAtCursorActionSetting implements ActionSetting {
 		this.type = "INSERT_CONTENT_AT_CURSOR";
 		this.args = {
 			content: "",
+			position: "atCursor",
 		};
 	}
 
 	name() {
-		return Messages.setting_label_rule_action_type_insert_content_at_cursor.get();
+		return Messages.setting_label_rule_action_type_insert_content.get();
 	}
 
 	renderSettings(
@@ -32,6 +34,19 @@ export class InsertContentAtCursorActionSetting implements ActionSetting {
 		refresh: () => void,
 		onSave: (action: Action, rule: Rule) => void
 	): void {
+
+		setting.addDropdown((dropdown) => {
+			dropdown
+				.addOption("atCursor", Messages.setting_label_rule_action_type_insert_content_at_cursor.get())
+				.addOption("fileEnd", Messages.setting_label_rule_action_type_insert_content_at_file_end.get())
+				.addOption("fileStart", Messages.setting_label_rule_action_type_insert_content_at_file_start.get())
+				.setValue(action.args.position?.toString() || "atCursor")
+				.onChange(async (value) => {
+					action.args.position = value;
+					onSave(action, rule);
+				});
+		})
+
 		setting.addTextArea((text) => {
 			text.setPlaceholder("content")
 				.setValue(action.args.content?.toString() || "")

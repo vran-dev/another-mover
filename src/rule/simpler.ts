@@ -35,7 +35,7 @@ export class Simpler {
 		}
 
 		for (const action of this.context.rule.actions) {
-			console.log("invoke action ", action, this.context.file.path);
+			console.log("invoke action ", action.type, this.context.file.path);
 			try {
 				const invoker = ActionHandlerFactory.create(
 					action.type,
@@ -47,6 +47,7 @@ export class Simpler {
 				new Notice(
 					`unknown actionType ${action.type}, maybe you need to update plugin`
 				);
+				console.error(e)
 				return;
 			}
 		}

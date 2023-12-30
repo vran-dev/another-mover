@@ -22,7 +22,7 @@ export class MoveCurrentFolderActionSetting implements ActionSetting {
 	}
 
 	name() {
-		return Messages.setting_label_rule_action_type_move_current_file.get();
+		return Messages.setting_label_rule_action_type_move_current_folder.get();
 	}
 
 	renderSettings(

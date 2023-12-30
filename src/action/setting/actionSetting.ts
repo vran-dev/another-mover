@@ -1,6 +1,6 @@
 import { App, Setting } from "obsidian";
 import { Action } from "../action";
-import { InsertContentAtCursorActionSetting } from "./InsertContentAtCursorActionSetting";
+import { InsertContentActionSetting } from "./InsertContentActionSetting";
 import { InvokeCommandActionSetting } from "./InvokeCommandActionSetting";
 import { MoveCurrentFileActionSetting } from "./MoveCurrentFileActionSetting";
 import { MoveCurrentFolderActionSetting } from "./MoveCurrentFolderActionSetting";
@@ -21,7 +21,7 @@ export interface ActionSetting extends Action {
 }
 
 export const actionSettings: ActionSetting[] = [
-	new InsertContentAtCursorActionSetting(),
+	new InsertContentActionSetting(),
 	new InvokeCommandActionSetting(),
 	new MoveCurrentFileActionSetting(),
 	new MoveCurrentFolderActionSetting(),

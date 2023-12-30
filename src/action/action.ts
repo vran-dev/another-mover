@@ -1,7 +1,7 @@
 import { MoveCurrentFolderActionSetting } from "./setting/MoveCurrentFolderActionSetting";
 import { MoveCurrentFileActionSetting } from "./setting/MoveCurrentFileActionSetting";
 import { UpdatePropertyActionSetting } from "./setting/UpdatePropertyActionSetting";
-import { InsertContentAtCursorActionSetting } from "./setting/InsertContentAtCursorActionSetting";
+import { InsertContentActionSetting } from "./setting/InsertContentActionSetting";
 import { InvokeCommandActionSetting } from "./setting/InvokeCommandActionSetting";
 
 export interface Action {
@@ -26,6 +26,6 @@ export const actionSettings = [
 	new MoveCurrentFolderActionSetting(),
 	new MoveCurrentFileActionSetting(),
 	new UpdatePropertyActionSetting(),
-	new InsertContentAtCursorActionSetting(),
+	new InsertContentActionSetting(),
 	new InvokeCommandActionSetting(),
 ];

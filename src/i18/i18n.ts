@@ -31,7 +31,7 @@ export const Messages = {
 		"move current file"
 	),
 	setting_label_rule_action_type_move_current_folder: new Message(
-		"移动当前文件夹",
+		"移动当前目录",
 		"move current folder"
 	),
 	setting_label_rule_action_type_move_matched_files_in_subfolder: new Message(
@@ -43,13 +43,26 @@ export const Messages = {
 		"update property value"
 	),
 
-	setting_label_rule_action_type_insert_content_at_cursor: new Message(
-		"在光标处插入内容",
-		"insert content at cursor"
+	setting_label_rule_action_type_insert_content: new Message(
+		"插入内容",
+		"insert content"
 	),
 	setting_label_rule_action_type_invoke_command: new Message(
 		"执行命令",
 		"execute command"
+	),
+
+	setting_label_rule_action_type_insert_content_at_cursor: new Message(
+		"在光标后",
+		"at cursor"
+	),
+	setting_label_rule_action_type_insert_content_at_file_start: new Message(
+		"在文件开头",
+		"at file start"
+	),
+	setting_label_rule_action_type_insert_content_at_file_end: new Message(
+		"在文件结尾",
+		"at file end"
 	),
 
 	/**

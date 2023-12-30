@@ -1,4 +1,4 @@
-import InsertContentAtCursorActionHandler from "./insertContentAtCursorHandler";
+import InsertContentActionHandler from "./insertContentHandler";
 import MoveCurrentFileActionHandler from "./moveCurrentFileActionHandler";
 import UpdatePropertyActionHandler from "./updatePropertyActionHandler";
 import { RunningContext } from "src/rule/simpler";
@@ -20,7 +20,7 @@ export default class ActionHandlerFactory {
 			case "UPDATE_PROPERTY":
 				return new UpdatePropertyActionHandler(action, context);
 			case "INSERT_CONTENT_AT_CURSOR":
-				return new InsertContentAtCursorActionHandler(action, context);
+				return new InsertContentActionHandler(action, context);
 			case "INVOKE_COMMAND":
 				return new InvokeCommandActionHandler(action, context);
 			default:
